@@ -2,8 +2,7 @@
 #include <SDL.h>
 #include <SDL_image.h>
 
-float _rotationSpeed = 1.0f;
-
+//No globals!!! 
 TestBox::~TestBox()
 {
   SDL_DestroyTexture(_testTexture);
@@ -48,7 +47,7 @@ void TestBox::Draw(SDL_Renderer *renderer, float dt)
   drawRect.w *= _transform.scale.x;
   drawRect.h *= _transform.scale.y;
 
-  SDL_RenderCopyEx(renderer, _testTexture, nullptr, &drawRect, MathUtils::ToRadians(_transform.rotation.z), &_testTextureRotationCenter, SDL_FLIP_NONE);
+  SDL_RenderCopyEx(renderer, _testTexture, nullptr, &drawRect, MathUtils::ToDegrees(_transform.rotation.z), &_testTextureRotationCenter, SDL_FLIP_NONE);
 }
 
 void TestBox::SetRotationSpeed(float rotationSpeed)

@@ -49,6 +49,10 @@ void Game::InitializeImpl()
   _firstBox.GetTransform().position = { windowSize.x / 2, windowSize.y / 2, 0 };
   _secondBox.GetTransform().position = { windowSize.x / 3, windowSize.y / 1, 0 };
   _thirdBox.GetTransform().position = { windowSize.x / 1, windowSize.y / 3, 0 };
+
+  _firstBox.SetRotationSpeed(.05f);
+	_secondBox.SetRotationSpeed(1.0f);
+  _thirdBox.SetRotationSpeed(5.0f);
 }
 
 void Game::UpdateImpl(float dt)
@@ -59,6 +63,9 @@ void Game::UpdateImpl(float dt)
   {
     (*itr)->Update(dt);
   }
+  printf("First:%f\n", _firstBox.GetTransform().rotation.z);
+  printf("Second:%f\n", _secondBox.GetTransform().rotation.z);
+  printf("Third:%f\n", _thirdBox.GetTransform().rotation.z);
 }
 
 void Game::DrawImpl(SDL_Renderer *renderer, float dt)
